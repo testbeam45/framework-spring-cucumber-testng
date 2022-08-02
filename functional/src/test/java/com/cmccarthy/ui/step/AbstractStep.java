@@ -1,6 +1,6 @@
-package com.framework.ui.step;
+package com.cmccarthy.ui.step;
 
-import com.framework.ui.utils.DriverHelper;
+import com.cmccarthy.ui.utils.DriverHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.springframework.beans.factory.annotation.Autowired;

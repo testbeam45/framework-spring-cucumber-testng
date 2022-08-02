@@ -1,4 +1,4 @@
-package com.framework.ui.utils;
+package com.cmccarthy.ui.utils;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementNotInteractableException;

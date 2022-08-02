@@ -1,4 +1,4 @@
-package com.framework.ui.utils.expectedConditions;
+package com.cmccarthy.ui.utils.expectedConditions;
 
 import com.cmccarthy.common.utils.Constants;
 import org.openqa.selenium.ElementNotVisibleException;

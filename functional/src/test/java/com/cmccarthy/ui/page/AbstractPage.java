@@ -1,6 +1,6 @@
-package com.framework.ui.page;
+package com.cmccarthy.ui.page;
 
-import com.framework.ui.utils.DriverManager;
+import com.cmccarthy.ui.utils.DriverManager;
 import org.openqa.selenium.support.PageFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

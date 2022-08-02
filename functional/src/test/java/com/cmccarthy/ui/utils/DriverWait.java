@@ -1,19 +1,21 @@
-package com.framework.ui.utils;
+package com.cmccarthy.ui.utils;
 
 import com.cmccarthy.common.utils.Constants;
-import com.framework.ui.utils.expectedConditions.ClickabilityOfElement;
-import com.framework.ui.utils.expectedConditions.ClickabilityOfElementByLocator;
-import com.framework.ui.utils.expectedConditions.InvisibilityOfElement;
-import com.framework.ui.utils.expectedConditions.InvisibilityOfElementByLocator;
-import com.framework.ui.utils.expectedConditions.VisibilityOfElement;
-import com.framework.ui.utils.expectedConditions.VisibilityOfElementByLocator;
+import com.cmccarthy.ui.utils.expectedConditions.ClickabilityOfElement;
+import com.cmccarthy.ui.utils.expectedConditions.ClickabilityOfElementByLocator;
+import com.cmccarthy.ui.utils.expectedConditions.InvisibilityOfElement;
+import com.cmccarthy.ui.utils.expectedConditions.InvisibilityOfElementByLocator;
+import com.cmccarthy.ui.utils.expectedConditions.VisibilityOfElement;
+import com.cmccarthy.ui.utils.expectedConditions.VisibilityOfElementByLocator;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -60,7 +62,7 @@ public class DriverWait {
      */
     private void waitForElementVisible(WebElement element) {
         try {
-            waitLong().until(new VisibilityOfElement (element));
+            waitLong().until(new VisibilityOfElement(element));
         } catch (Exception ignored) {
         }
     }
@@ -70,7 +72,7 @@ public class DriverWait {
      */
     private void waitForElementVisible(By locator) {
         try {
-            waitLong().until(new VisibilityOfElementByLocator (locator));
+            waitLong().until(new VisibilityOfElementByLocator(locator));
         } catch (Exception ignored) {
         }
     }
@@ -80,7 +82,7 @@ public class DriverWait {
      */
     private void waitForElementInVisible(By locator) {
         try {
-            waitLong().until(new InvisibilityOfElementByLocator (locator));
+            waitLong().until(new InvisibilityOfElementByLocator(locator));
         } catch (Exception ignored) {
         }
     }
@@ -90,7 +92,7 @@ public class DriverWait {
      */
     private void waitForElementInVisible(WebElement element) {
         try {
-            waitLong().until(new InvisibilityOfElement (element));
+            waitLong().until(new InvisibilityOfElement(element));
         } catch (Exception ignored) {
         }
     }
@@ -100,7 +102,7 @@ public class DriverWait {
      */
     private void waitForElementClickable(WebElement element) throws NoSuchFieldException {
         try {
-            waitLong().until(new ClickabilityOfElement (element));
+            waitLong().until(new ClickabilityOfElement(element));
         } catch (Exception t) {
             throw new NoSuchFieldException("could not interact with the element " + element);
         }

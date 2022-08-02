@@ -1,4 +1,4 @@
-package com.framework.ui.utils;
+package com.cmccarthy.ui.utils;
 
 import com.cmccarthy.common.utils.ApplicationProperties;
 import com.cmccarthy.common.utils.Constants;
@@ -13,6 +13,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;

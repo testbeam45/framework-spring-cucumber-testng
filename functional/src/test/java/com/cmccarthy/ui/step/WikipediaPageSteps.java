@@ -1,7 +1,7 @@
-package com.framework.ui.step;
+package com.cmccarthy.ui.step;
 
 import com.cmccarthy.common.utils.ApplicationProperties;
-import com.framework.ui.page.WikipediaHomePage;
+import com.cmccarthy.ui.page.WikipediaHomePage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import org.slf4j.Logger;

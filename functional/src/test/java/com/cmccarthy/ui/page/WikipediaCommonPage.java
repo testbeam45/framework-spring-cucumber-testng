@@ -1,7 +1,7 @@
-package com.framework.ui.page;
+package com.cmccarthy.ui.page;
 
-import com.framework.ui.annotations.PageObject;
-import com.framework.ui.utils.DriverManager;
+import com.cmccarthy.ui.annotations.PageObject;
+import com.cmccarthy.ui.utils.DriverManager;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;

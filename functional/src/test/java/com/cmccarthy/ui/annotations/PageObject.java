@@ -1,4 +1,4 @@
-package com.framework.ui.annotations;
+package com.cmccarthy.ui.annotations;
 
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactoryFinder;

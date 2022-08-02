@@ -1,4 +1,4 @@
-package com.framework.ui.config;
+package com.cmccarthy.ui.config;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

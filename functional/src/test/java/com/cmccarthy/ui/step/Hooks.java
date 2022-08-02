@@ -1,8 +1,8 @@
-package com.framework.ui.step;
+package com.cmccarthy.ui.step;
 
 import com.cmccarthy.common.utils.HookUtil;
-import com.framework.ui.config.WikipediaAbstractTestDefinition;
-import com.framework.ui.utils.DriverManager;
+import com.cmccarthy.ui.config.WikipediaAbstractTestDefinition;
+import com.cmccarthy.ui.utils.DriverManager;
 import com.codeborne.selenide.WebDriverRunner;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;

@@ -1,6 +1,6 @@
-package com.framework.ui.step;
+package com.cmccarthy.ui.step;
 
-import com.framework.ui.page.WikipediaCommonPage;
+import com.cmccarthy.ui.page.WikipediaCommonPage;
 import io.cucumber.java.en.Then;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
