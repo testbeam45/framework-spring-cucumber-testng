@@ -444,9 +444,9 @@ docker-compose -f appium-grid-compose.yml up -d
 
 # Troubleshooting
 
-- Execute the following commands to resolve any dependency issues
-    1. `cd ~/install directory path/spring-cucumber-testng-parallel-test-harness`
-    2. `mvn clean install -DskipTests`
+- Execute the following commands inside the project to resolve any dependency issues
+    1. `mvn clean install -DskipTests`
+    2. `mvn clean install -fae`
 
 # References 
 Documentation about Appium and Selenium Grid

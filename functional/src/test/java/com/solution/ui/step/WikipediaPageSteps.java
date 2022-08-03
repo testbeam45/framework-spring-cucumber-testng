@@ -25,9 +25,9 @@ public class WikipediaPageSteps extends AbstractStep {
 
     @Given("The user opened the Wikipedia Homepage")
     public void userIsOpenMainPage() throws NoSuchFieldException {
-        wikipediaHomePage.open(applicationProperties.getWikipediaUrl());
+        wikipediaHomePage.open(applicationProperties.getWebUrl());
         logger.info("The user navigated to the Wikipedia Homepage : " + applicationProperties
-                .getWikipediaUrl());
+                .getWebUrl());
         assertTrue("Wikipedia Homepage should be opened",
                 isElementDisplayed(wikipediaHomePage.getCommonPage()));
     }

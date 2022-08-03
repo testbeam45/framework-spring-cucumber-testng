@@ -53,8 +53,7 @@ public class DriverManager {
     @Autowired
     private Environment environment;
 
-    @Value ( "${web.driver.manager.active}" )
-    private Boolean activateWebDriverManager;
+
 
     public void createDriver() throws MalformedURLException {
         if (getDriver() == null) {
@@ -73,7 +72,7 @@ public class DriverManager {
     public void setLocalWebDriver() {
         switch (applicationProperties.getBrowser()) {
             case ("chrome"):
-                if(!activateWebDriverManager){
+                if(!applicationProperties.getIsWebDriverOn()){
                     System.setProperty("webdriver.chrome.driver", Constants.DRIVER_DIRECTORY + "/chromedriver" + getExtension());
                 }
                 else {
@@ -87,7 +86,7 @@ public class DriverManager {
                 driverThreadLocal.set(new ChromeDriver(chromeOptions));
                 break;
             case ("firefox"):
-                if(!activateWebDriverManager){
+                if(!applicationProperties.getIsWebDriverOn()){
                     System.setProperty("webdriver.gecko.driver", Constants.DRIVER_DIRECTORY + "/geckodriver" + getExtension());
                     System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE, "/dev/null");
                 }else {
@@ -98,7 +97,7 @@ public class DriverManager {
                 driverThreadLocal.set(new FirefoxDriver(firefoxOptions));
                 break;
             case ("safari"):
-                if(!activateWebDriverManager){
+                if(!applicationProperties.getIsWebDriverOn()){
                     System.setProperty("webdriver.opera.driver", Constants.DRIVER_DIRECTORY + "/operadriver" + getExtension());
                 }else {
                     WebDriverManager.safaridriver ().cachePath ( Constants.DRIVER_DIRECTORY ).avoidOutputTree ().setup ();
@@ -106,7 +105,7 @@ public class DriverManager {
                 driverThreadLocal.set(new OperaDriver());
                 break;
             case ("edge"):
-                if(!activateWebDriverManager){
+                if(!applicationProperties.getIsWebDriverOn()){
                     System.setProperty("webdriver.edge.driver", Constants.DRIVER_DIRECTORY + "/MicrosoftWebDriver" + getExtension());
                 }else {
                     WebDriverManager.edgedriver ().cachePath ( Constants.DRIVER_DIRECTORY ).avoidOutputTree ().setup ();
@@ -192,7 +191,7 @@ public class DriverManager {
     }
 
     public void downloadDriver() {
-        if(!activateWebDriverManager) {
+        if(!applicationProperties.getIsWebDriverOn()) {
             try {
                 Process process;
                 if ( getOperatingSystem ( ).equals ( "win" ) ) {
@@ -256,14 +255,11 @@ public class DriverManager {
             desiredCapabilities.setCapability ( MobileCapabilityType.FULL_RESET , true );
             desiredCapabilities.setCapability ( MobileCapabilityType.NO_RESET , false );
 
-            // Create URL
-            URL remoteUrl = new URL ( remoteContainer );
-
-            // Create Remote Connection to Selenium/Appium Grid
-            appium = new AndroidDriver ( remoteUrl , desiredCapabilities );
+            // Create Remote Connection to Appium Grid
+            appium = new AndroidDriver ( new URL ( applicationProperties.getAppiumUrl () ), desiredCapabilities );
 
             // Wait to load mobile elements
-            wait = new WebDriverWait ( appium , 30 );
+            wait = new WebDriverWait ( appium , applicationProperties.getWaitTimeout () );
         }catch (MalformedURLException e){
             e.printStackTrace ();
         }

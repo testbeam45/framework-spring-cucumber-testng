@@ -6,39 +6,38 @@ import org.springframework.stereotype.Component;
 @Component
 public class ApplicationProperties {
 
-    @Value("${weather.url.value}")
-    private String weatherAppUrl;
-    @Value("${wikipedia.url.value}")
-    private String wikipediaUrl;
+    @Value("${api.url.value}")
+    private String apiAppUrl;
+    @Value("${web.url.value}")
+    private String webAppUrl;
     @Value("${browser}")
     private String browser;
     @Value("${gridUrl}")
     private String gridUrl;
+    @Value ( "${web.driver.manager.active}" )
+    private Boolean activateWebDriverManager;
+    @Value ( "${appium.GridUrl}" )
+    private String gridAppiumUrl;
+    @Value ( "${application.timeout}" )
+    private int waitTimeout;
 
-    public String getWeatherAppUrl() {
-        return weatherAppUrl;
+    public int getWaitTimeout(){return waitTimeout;}
+    public String getAppiumUrl(){return gridAppiumUrl;}
+    public Boolean getIsWebDriverOn(){return activateWebDriverManager;}
+    public String getWeatherAppUrl() {return apiAppUrl;}
+    public void setApiAppUrl(String weatherAppUrl) {
+        this.apiAppUrl = weatherAppUrl;
     }
-
-    public void setWeatherAppUrl(String weatherAppUrl) {
-        this.weatherAppUrl = weatherAppUrl;
+    public String getWebUrl() {return webAppUrl;}
+    public void setWebUrl(String webUrl) {
+        this.webAppUrl = webUrl;
     }
-
-    public String getWikipediaUrl() {
-        return wikipediaUrl;
-    }
-
-    public void setWikipediaUrl(String wikipediaUrl) {
-        this.wikipediaUrl = wikipediaUrl;
-    }
-
     public String getBrowser() {
         return browser;
     }
-
     public void setBrowser(String browser) {
         this.browser = browser;
     }
-
     public String getGridUrl() {
         return gridUrl;
     }
