@@ -1,4 +1,7 @@
 # Solution: Cucumber-Java-Page-Factory-TestNG Template
+
+[![Actions Status](https://github.com/jesussalatiel/framework-spring-cucumber-testng/actions/workflows/build.yml/badge.svg)](https://github.com/jesussalatiel/framework-spring-cucumber-testng/actions)
+
 #### with Cucumber-java, Cucumber Spring, custom annotation @PageObject, lambda expression ready, Selenium PageFactory and webdriver manager (Selenium WebDriver) for:
 * ##### Chrome
 * ##### Firefox
