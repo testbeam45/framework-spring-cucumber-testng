@@ -207,6 +207,7 @@
                         <argLine>
                             -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                         </argLine>
+                        <useFile>false</useFile>
                     </configuration>
                     <dependencies>
                         <dependency>

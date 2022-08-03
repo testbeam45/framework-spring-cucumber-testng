@@ -14,7 +14,4 @@ jobs:
           distribution: 'adopt'
       - name: General Test
         run: mvn clean install -fae
-      - name: Selenium Test
-        run: mvn clean install -pl functional
-      - name: Integration Test
-        run: mvn clean install -pl integration
+
