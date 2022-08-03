@@ -12,6 +12,7 @@ jobs:
         with:
           java-version: '8.0.192+12'
           distribution: 'adopt'
-      - name: General Test
-        run: mvn clean install -fae
+      - name: Selenium Testing
+        run: mvn clean install -pl functional
+
 

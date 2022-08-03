@@ -216,6 +216,7 @@ public class DriverManager {
 
     private String getOperatingSystem() {
         String os = System.getProperty("os.name", "generic").toLowerCase(Locale.ROOT);
+        log.debug ( "Operative System Detected: " + os);
         if (os.contains("mac") || os.contains("darwin")) {
             return "mac";
         } else if (os.contains("win")) {
