@@ -77,7 +77,6 @@
             <version>23.0.0</version>
         </dependency>
 
-
         <!--test dependencies-->
         <dependency>
             <groupId>commons-io</groupId>
@@ -155,6 +154,24 @@
         </resources>
         <pluginManagement>
             <plugins>
+                <plugin>
+                    <artifactId>maven-clean-plugin</artifactId>
+                    <version>3.2.0</version>
+                    <configuration>
+                        <filesets>
+                            <fileset>
+                                <directory>assets</directory>
+                                <includes>
+                                    <include>**/*</include>
+                                </includes>
+                                <excludes>
+                                    <exclude>**/*.apk</exclude>
+                                </excludes>
+                                <followSymlinks>false</followSymlinks>
+                            </fileset>
+                        </filesets>
+                    </configuration>
+                </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-resources-plugin</artifactId>
