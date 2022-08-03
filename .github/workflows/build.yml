@@ -20,13 +20,10 @@ jobs:
         continue-on-error: true
 
       - name: Deploy Pages
-        uses: JamesIves/github-pages-deploy-action@v4
         if: always()
         run: mvn allure:serve
         continue-on-error: true
-        with:
-          branch: gh-pages
-          folder: ./target/site/allure-maven-plugin
+
 
 
 
