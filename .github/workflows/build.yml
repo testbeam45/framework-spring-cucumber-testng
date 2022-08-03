@@ -19,13 +19,14 @@ jobs:
         run: mvn package
         continue-on-error: true
 
-      - name: Get Allure History
-        uses: actions/checkout@v3
+      - name: Deploy Pages
+        uses: JamesIves/github-pages-deploy-action@v4
         if: always()
+        run: mvn allure:serve
         continue-on-error: true
         with:
-          ref: gh-pages
-          path: gh-pages
+          branch: gh-pages
+          folder: ./target/site/allure-maven-plugin
 
 
 
