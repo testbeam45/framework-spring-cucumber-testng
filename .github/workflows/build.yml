@@ -1,4 +1,4 @@
-name: Java CI
+name: Java CI - Selenium Testing
 
 on: [push]
 
@@ -15,6 +15,6 @@ jobs:
       - name: General Test
         run: mvn clean install -fae
       - name: Selenium Test
-          run: mvn clean install -pl functional
+        run: mvn clean install -pl functional
       - name: Integration Test
-          run: mvn clean install -pl integration
+        run: mvn clean install -pl integration
