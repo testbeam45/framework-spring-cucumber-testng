@@ -223,7 +223,7 @@
                     <version>2.10.0</version>
                     <configuration>
                         <reportVersion>${allure.version}</reportVersion>
-                        <resultsDirectory>${project.build.directory}/allure-results</resultsDirectory>
+                        <resultsDirectory>${project.build.directory}\allure-results</resultsDirectory>
                     </configuration>
                 </plugin>
             </plugins>
