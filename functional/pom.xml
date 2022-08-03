@@ -40,6 +40,14 @@
             <artifactId>webdrivermanager</artifactId>
             <version>5.2.2</version>
         </dependency>
+
+        <!-- Appium Dependencies -->
+        <dependency>
+            <groupId>io.appium</groupId>
+            <artifactId>java-client</artifactId>
+            <version>8.1.1</version>
+        </dependency>
+
     </dependencies>
 
     <build>

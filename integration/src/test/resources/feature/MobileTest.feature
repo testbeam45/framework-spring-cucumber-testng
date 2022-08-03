@@ -1,7 +1,7 @@
-@OpenWeather
-Feature: Guess the word
+Feature: Is it Friday yet?
+  Everybody wants to know when it's Friday
 
-  # The first example has two steps
-  Scenario: Maker starts a game
-    When the Maker starts a game
-    Then the Maker waits for a Breaker to join
+  Scenario: Sunday isn't Friday
+    Given today is Sunday
+    When I ask whether it's Friday yet
+    Then I should be told "Nope"

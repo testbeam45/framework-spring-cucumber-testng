@@ -1,6 +1,9 @@
-# Spring - Cucumber - TestNG - Test Harness
-
-[![Build Status](https://travis-ci.com/cmccarthyIrl/spring-cucumber-testng-parallel-test-harness.svg?branch=master)](https://travis-ci.com/cmccarthyIrl/spring-cucumber-testng-parallel-test-harness) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/6e4bd0bef1b5467aaaed6bc70a8ca2ae)](https://www.codacy.com/gh/cmccarthyIrl/spring-cucumber-testng-parallel-test-harness/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=cmccarthyIrl/spring-cucumber-testng-parallel-test-harness&amp;utm_campaign=Badge_Grade)
+# Solution: Cucumber-Java-Page-Factory-TestNG Template
+#### with Cucumber-java, Cucumber Spring, custom annotation @PageObject, lambda expression ready, Selenium PageFactory and webdriver manager (Selenium WebDriver) for:
+* ##### Chrome
+* ##### Firefox
+* ##### Appium
+* ##### RestAssured
 
 # Index
 
@@ -27,8 +30,15 @@
   <td>
      | <a href="#configuration">Configuration</a> 
     | <a href="#environment-switching">Environment Switching</a>
-    | <a href="#extent-reports">Spark HTML Reports</a>
     | <a href="#logging">Logging</a> |
+  </td>
+</tr>
+<tr>
+  <th>Docker</th>
+  <td>
+     | <a href="https://www.docker.com/products/docker-desktop/">Docker</a>
+    | <a href="https://docs.docker.com/compose/">Docker Compose</a>|
+ | <a href="https://www.docker.com/products/docker-desktop/">Docker Desktop</a>|
   </td>
 </tr>
 <tr>
@@ -36,10 +46,19 @@
   <td>
     | <a href="#hooks">Before / After Hooks</a>
     | <a href="#json-transforms">JSON Transforms</a>
-    | <a href="#contributing">Contributing</a> |
+    | <a href="https://support.smartbear.com/testcomplete/docs/app-testing/mobile/device-cloud/configure-appium/android-on-windows.html">Install Appium - Local</a> |
     </td>
 </tr>
 </table>
+
+# Customise Cucumber tests
+* add your .feature files with scenarios
+* create custom steps class / steps classes with @Autowired annotations for page objects class / classes
+* generate steps- in .feature file press 'alt+enter' shortcut and choose 'Create step definition' option, choose created steps class / steps classes to paste steps
+* create custom page objects classes with methods and with @Component and @Autowired annotations for webdriver manager
+* to use PageFactory, extend page object class / classes with BasePage class and add annotation: @PageObject
+* create assertions classes with methods and @Component annotation
+* delete example .feature files, steps classes, page objects classes and assertion classes
 
 # Maven
 
@@ -154,6 +173,37 @@ public class WikipediaParallelRunnerTest extends AbstractTestNGCucumberTests {
 }
 ```
 
+# Lambda expression ready
+Steps classes implements En interface and are prepared to use code by 'lambda-way'. Example of lambda expression is used in SignUpFormPageObjects class:
+```
+    private void sendKeysForInputWithAttributeName(String partValueName, String keyToSend){
+        webDriverFactory.getDriver().findElements(By.cssSelector(USER_INPUT))
+                .stream()
+                .filter(elem->elem.getAttribute(USER_INPUT_ATTRIBUTE_NAME).contains(partValueName))
+                .findFirst()
+                .get()
+                .sendKeys(keyToSend);
+    }
+```
+
+# Example in template:
+```
+@PageObject
+public class ActionPageObjects extends BasePage {
+
+    public ActionPageObjects(WebDriverManager webDriverFactory) {
+        super(webDriverFactory);
+    }
+
+    @FindBy (how= How.CSS,  using=".Header-nav-item[href*=jam]")
+    private WebElement menuJam;
+
+    public void clickJamMenu() {
+        menuJam.click();
+    }
+}
+```
+
 # Command Line
 
 Normally you will use your IDE to run a `*.feature` file directly or via the `*Test.java` class. With the `Test` class,
@@ -173,6 +223,10 @@ Note that the `mvn clean install` command runs all test Classes that follow the 
 mvn clean install
 ```
 
+You can recompile the modules with this command
+```
+mvn clean install -fae
+```
 # IDE Support
 
 To minimize the discrepancies between IDE versions and Locales the `<sourceEncoding>` is set to `UTF-8`
@@ -202,8 +256,8 @@ The Java version to use is defined in the `maven-compiler-plugin`
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>11</source>
-                    <target>11</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
             ...
@@ -234,7 +288,7 @@ properties to use etc
 @EnableRetry
 @Configuration
 @ComponentScan({
-        "com.cmccarthy.api", "com.cmccarthy.common",
+        "com.solution.api", "com.solution.common",
 })
 @PropertySource("application.properties")
 public class FrameworkContextConfiguration {
@@ -373,16 +427,33 @@ public class Hooks extends AbstractTestDefinition {
 </dependency>
 ```
 
+
+# Docker Compose
+
+To run Appium Grid --version 3
+```
+docker-compose -f appium-grid-compose.yml up -d
+```
+
+To run Selenium Grid --version 4
+```
+docker-compose -f appium-grid-compose.yml up -d
+```
+
+
+
 # Troubleshooting
 
 - Execute the following commands to resolve any dependency issues
     1. `cd ~/install directory path/spring-cucumber-testng-parallel-test-harness`
     2. `mvn clean install -DskipTests`
 
-# Contributing
-
-Spotted a mistake? Questions? Suggestions?
-
-[Open an Issue](https://github.com/cmccarthyIrl/spring-cucumber-testng-parallel-test-harness/issues)
-
-
+# References 
+Documentation about Appium and Selenium Grid
+1. [Appium Tutorial Step by Step Appium Automation](https://www.swtestacademy.com/appium-tutorial/)
+2. [Docker Android: Docker Solution with NoVNC Supported and Video](https://morioh.com/p/0ec7c1a6f9b0)
+3. [Docker Android Repository](https://github.com/budtmo/docker-android?ref=morioh.com&utm_source=morioh.com)
+4. [How to setting Appium Server and Selenium Grid](https://github.com/budtmo/docker-android/blob/master/README_APPIUM_AND_SELENIUM.md)
+5. [Docker Compose Example](https://github.com/budtmo/docker-android/blob/master/docker-compose.yml#L70)
+6. [Grid v4 - Docker Compose - Example](https://github.com/SeleniumHQ/docker-selenium/blob/trunk/docker-compose-v3-full-grid.yml)
+7. [Docker images for the Selenium Grid Server](https://github.com/SeleniumHQ/docker-selenium#docker-compose)

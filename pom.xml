@@ -13,7 +13,6 @@
         <module>common</module>
         <module>functional</module>
         <module>integration</module>
-        <module>mobile</module>
     </modules>
 
     <parent>

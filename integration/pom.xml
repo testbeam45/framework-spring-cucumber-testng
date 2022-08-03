@@ -27,7 +27,7 @@
                 <version>1.7.0</version>
                 <configuration>
                     <resourceBundles>
-                        <resourceBundle>spring-cucumber-testng-parallel-test-harness:common:1.0-SNAPSHOT
+                        <resourceBundle>framework-spring-cucumber-testng:common:1.0-SNAPSHOT
                         </resourceBundle>
                     </resourceBundles>
                 </configuration>

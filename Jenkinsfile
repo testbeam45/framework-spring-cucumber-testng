@@ -22,7 +22,7 @@ pipeline {
             post {
                 always {
                     script {
-                        def moduleNames = ["weather", "wikipedia"]
+                        def moduleNames = ["integration", "functional"]
                         for (i = 0; i < moduleNames.size(); i++) {
                             publishHTML target: [allowMissing         : false,
                                                  alwaysLinkToLastBuild: false,

@@ -4,7 +4,7 @@
 
     <test name="Wikipedia-Suite-1">
         <classes>
-            <class name="com.cmccarthy.ui.WikipediaParallelRunnerTest"/>
+            <class name="com.solution.ui.ParallelRunnerTest"/>
         </classes>
     </test>
 

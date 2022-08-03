@@ -25,7 +25,7 @@
         </layout>
     </appender>
 
-    <logger name="com.cmccarthy" level="info" additivity="false">
+    <logger name="com.solution" level="info" additivity="false">
         <appender-ref ref="FILE-THREAD"/>
         <appender-ref ref="STDOUT"/>
     </logger>
