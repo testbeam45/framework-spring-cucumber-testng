@@ -20,7 +20,7 @@ jobs:
         continue-on-error: true
       - uses: deblockt/cucumber-report-annotations-action@v1.7
         with:
-          access-token: ${{ secrets.GITHUB_TOKEN }}
+          access-token: ${{ secrets.token }}
           path: "**/functional-report.json"
 
       - name: Run Integration Tests
