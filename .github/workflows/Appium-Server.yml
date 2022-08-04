@@ -10,4 +10,4 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Install and Run Appium Server
-        uses: moatazeldebsy/appium-server-gitHub-action@V1.0.4
+        uses: moatazeldebsy/appium-server-gitHub-action@V1.0.5
