@@ -10,7 +10,8 @@ import org.testng.annotations.DataProvider;
         },
         plugin = {
                 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
-                "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"
+                "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm",
+                "json:../target/api-report.json"
         })
 public class RunnerTest extends AbstractTestNGCucumberTests {
     @Override

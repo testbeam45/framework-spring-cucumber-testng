@@ -1,9 +1,9 @@
-name: Java CI - Selenium Testing
+name: Java CI - Regression By Tags
 
 on: [push]
 
 jobs:
-  build:
+  tests:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
@@ -14,9 +14,22 @@ jobs:
           java-version: '8.0.192+12'
           distribution: 'adopt'
 
-      - name: Regression By Tags
+      - name: Run Web Tests
         if: always()
         run: mvn package -D cucumber.filter.tags="@Web"
         continue-on-error: true
+      - uses: deblockt/cucumber-report-annotations-action@v1.7
+        with:
+          access-token: ${{ secrets.GITHUB_TOKEN }}
+          path: "**/functional-report.json"
 
+      - name: Run Integration Tests
+        if: always()
+        run: mvn package -D cucumber.filter.tags="@Api"
+        continue-on-error: true
+
+      - uses: deblockt/cucumber-report-annotations-action@v1.7
+        with:
+          access-token: ${{ secrets.GITHUB_TOKEN }}
+          path: "**/api-report.json"
 

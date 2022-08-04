@@ -1,4 +1,4 @@
-name: Java CI - Selenium Testing
+name: Java CI - General Regression
 
 on: [push]
 
