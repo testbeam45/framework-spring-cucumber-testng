@@ -1,4 +1,4 @@
-@OpenWeather
+@Api
 Feature: Open Weather App - Random Tests
 
   Scenario Outline: Verify the user can retrieve the weather from Open Weather

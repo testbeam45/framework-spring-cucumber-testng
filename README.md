@@ -443,7 +443,10 @@ To run Selenium Grid --version 4
 docker-compose -f appium-grid-compose.yml up -d
 ```
 
-
+To run by Tags
+```
+mvn test -D cucumber.filter.tags="@Example"
+```
 
 # Troubleshooting
 
