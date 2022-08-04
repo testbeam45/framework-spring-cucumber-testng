@@ -463,3 +463,4 @@ Documentation about Appium and Selenium Grid
 5. [Docker Compose Example](https://github.com/budtmo/docker-android/blob/master/docker-compose.yml#L70)
 6. [Grid v4 - Docker Compose - Example](https://github.com/SeleniumHQ/docker-selenium/blob/trunk/docker-compose-v3-full-grid.yml)
 7. [Docker images for the Selenium Grid Server](https://github.com/SeleniumHQ/docker-selenium#docker-compose)
+8. [Github Actions - android-emulator-runner](https://github.com/marketplace/actions/android-emulator-runner)
