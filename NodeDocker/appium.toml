@@ -1,9 +1,0 @@
-[node]
-detect-drivers = false
-max-sessions = 4
-
-
-[[node.driver-configuration]]
-max-sessions = 10
-display-name = "Chrome Local"
-stereotype = "{\"browserName\": \"chrome\"}"

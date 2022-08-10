@@ -1,6 +1,6 @@
-package com.solution.ui.page;
+package com.solution.mobile.page;
 
-import com.solution.ui.utils.DriverManager;
+import com.solution.mobile.utils.DriverManager;
 import org.openqa.selenium.support.PageFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -12,10 +12,12 @@ public abstract class AbstractPage {
     private DriverManager driverManager;
 
     protected AbstractPage(DriverManager driverManager) {
-        PageFactory.initElements(driverManager.getWebDriver(), this);
+        PageFactory.initElements(driverManager.getAppiumDriver (), this);
     }
 
-    protected void openAt(String url) {
-        driverManager.getWebDriver().get(url);
+    protected void launchApp(String apk){
+        driverManager.getAppiumDriver ().launchApp ();
     }
+
+
 }

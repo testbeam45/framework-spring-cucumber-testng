@@ -64,7 +64,7 @@ public class DriverHelper {
     public void click(By locator) throws NoSuchFieldException {
         try {
             driverWait.waitForElementToLoad(locator);
-            driverManager.getDriver().findElement(locator).click();
+            driverManager.getWebDriver().findElement(locator).click();
         } catch (StaleElementReferenceException e) {
             logger.warn("Could not click on the element");
             throw new RetryException("Could not click on the element");
@@ -77,9 +77,9 @@ public class DriverHelper {
     @Retryable(maxAttempts = 3, backoff = @Backoff(delay = 500), include = {RetryException.class})
     public void rightClick(By locator) throws NoSuchFieldException {
         driverWait.waitForElementToLoad(locator);
-        final WebElement element = driverManager.getDriver().findElement(locator);
+        final WebElement element = driverManager.getWebDriver().findElement(locator);
         try {
-            final Actions builder = new Actions(driverManager.getDriver());
+            final Actions builder = new Actions(driverManager.getWebDriver());
             builder.moveToElement(element).contextClick(element);
             builder.perform();
         } catch (Exception ser) {
@@ -106,7 +106,7 @@ public class DriverHelper {
         driverWait.waitForElementToLoad(element);
 
         try {
-            final Actions builder = new Actions(driverManager.getDriver());
+            final Actions builder = new Actions(driverManager.getWebDriver());
             builder.moveToElement(element).contextClick(element);
             builder.perform();
         } catch (Exception ser) {
@@ -123,7 +123,7 @@ public class DriverHelper {
     public void clickAction(WebElement element) throws NoSuchFieldException {
         driverWait.waitForElementToLoad(element);
         try {
-            final Actions builder = new Actions(driverManager.getDriver());
+            final Actions builder = new Actions(driverManager.getWebDriver());
             builder.moveToElement(element).click(element);
             builder.perform();
         } catch (Exception ser) {
@@ -139,9 +139,9 @@ public class DriverHelper {
     public void clickAction(By locator) throws NoSuchFieldException {
         driverWait.waitForElementToLoad(locator);
 
-        final WebElement element = driverManager.getDriver().findElement(locator);
+        final WebElement element = driverManager.getWebDriver().findElement(locator);
         try {
-            final Actions builder = new Actions(driverManager.getDriver());
+            final Actions builder = new Actions(driverManager.getWebDriver());
             builder.moveToElement(element).click(element);
             builder.perform();
         } catch (Exception ser) {

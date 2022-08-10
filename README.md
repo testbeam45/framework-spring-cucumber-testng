@@ -438,9 +438,9 @@ To run Appium Grid --version 3
 docker-compose -f appium-grid-compose.yml up -d
 ```
 
-To run Selenium Grid --version 4
+To run Selenoid By Tags
 ```
-docker-compose -f appium-grid-compose.yml up -d
+mvn clean install -DactiveProfile=jenkins -D cucumber.filter.tags="@Web"
 ```
 
 To run by Tags

@@ -13,6 +13,7 @@
         <module>common</module>
         <module>functional</module>
         <module>integration</module>
+        <module>mobile</module>
     </modules>
 
     <parent>
@@ -30,7 +31,9 @@
         <cucumber.version>7.3.3</cucumber.version>
         <assertj-core.version>3.23.1</assertj-core.version>
         <java.version>1.8</java.version>
-        <selenium-version>3.8.1</selenium-version>
+        <selenium-version>4.1.0</selenium-version>
+        <appium-version>7.6.0</appium-version>
+        <webdrivermanager-version>5.2.2</webdrivermanager-version>
         <selenide-version>6.1.1</selenide-version>
         <restassured.version>3.0.0</restassured.version>
         <surfire.plugin.version>2.22.2</surfire.plugin.version>
@@ -143,6 +146,13 @@
             <groupId>net.sf.jtidy</groupId>
             <artifactId>jtidy</artifactId>
             <version>r938</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>testcontainers</artifactId>
+            <version>1.17.3</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
     <build>

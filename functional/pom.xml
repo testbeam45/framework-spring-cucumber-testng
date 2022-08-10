@@ -27,25 +27,20 @@
         <!-- Selenium dependencies-->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-            <version>${selenium-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-server</artifactId>
             <version>3.141.59</version>
         </dependency>
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
-            <version>5.2.2</version>
+            <version>${webdrivermanager-version}</version>
         </dependency>
 
-        <!-- Appium Dependencies -->
+        <!-- Selenium/Appium Dependencies -->
         <dependency>
             <groupId>io.appium</groupId>
             <artifactId>java-client</artifactId>
-            <version>8.1.1</version>
+            <version>${appium-version}</version>
         </dependency>
     </dependencies>
 

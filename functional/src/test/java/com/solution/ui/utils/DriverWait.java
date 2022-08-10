@@ -118,14 +118,14 @@ public class DriverWait {
     }
 
     public Wait<WebDriver> waitLong() {
-        return new FluentWait<>(driverManager.getDriver())
+        return new FluentWait<>(driverManager.getWebDriver())
                 .withTimeout(Duration.ofSeconds(Constants.timeoutLong))
                 .pollingEvery(Duration.ofMillis(Constants.pollingLong))
                 .ignoring(NoSuchElementException.class, StaleElementReferenceException.class);
     }
 
     public Wait<WebDriver> waitShort() {
-        return new FluentWait<>(driverManager.getDriver())
+        return new FluentWait<>(driverManager.getWebDriver())
                 .withTimeout(Duration.ofSeconds(Constants.timeoutShort))
                 .pollingEvery(Duration.ofMillis(Constants.pollingShort))
                 .ignoring(NoSuchElementException.class, StaleElementReferenceException.class);
