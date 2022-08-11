@@ -17,26 +17,6 @@
       <artifactId>common</artifactId>
       <version>1.0-SNAPSHOT</version>
     </dependency>
-
-    <!-- Selenide dependencies-->
-    <dependency>
-      <groupId>com.codeborne</groupId>
-      <artifactId>selenide</artifactId>
-      <version>${selenide-version}</version>
-    </dependency>
-
-    <!-- Selenium dependencies-->
-    <dependency>
-      <groupId>org.seleniumhq.selenium</groupId>
-      <artifactId>selenium-server</artifactId>
-      <version>3.141.59</version>
-    </dependency>
-    <dependency>
-      <groupId>io.github.bonigarcia</groupId>
-      <artifactId>webdrivermanager</artifactId>
-      <version>${webdrivermanager-version}</version>
-    </dependency>
-
     <!-- Selenium/Appium Dependencies -->
     <dependency>
       <groupId>io.appium</groupId>
