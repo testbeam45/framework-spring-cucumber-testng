@@ -5,8 +5,6 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
@@ -22,7 +20,7 @@ import java.util.Arrays;
 @Component
 public class DriverManager {
     private static final ThreadLocal < AndroidDriver > appiumDriverThreadLocal = new ThreadLocal <> ( );
-    private final Logger log = LoggerFactory.getLogger ( DriverManager.class );
+   // private final Logger log = LoggerFactory.getLogger ( DriverManager.class );
 
     private WebDriverWait wait;
 
@@ -36,14 +34,13 @@ public class DriverManager {
     private Environment environment;
 
     public void createAppiumDriver ( ) throws MalformedURLException {
-        if(applicationProperties.getIsAppiumOn ()) {
-            if ( getAppiumDriver ( ) == null ) {
-                if ( Arrays.toString ( this.environment.getActiveProfiles ( ) ).contains ( "jenkins" ) ) {
-                    //startEnvironment ();
-                    setRemoteDriverAppium ( new URL ( applicationProperties.getAppiumGridUrl ( ) ) );
-                }else {
+        if ( getAppiumDriver ( ) == null ) {
+            if ( Arrays.toString ( this.environment.getActiveProfiles ( ) ).contains ( "jenkins" ) ) {
+                //startEnvironment ();
+                System.out.println ("--------------------------->"+applicationProperties.getAppiumGridUrl ( ) );
+                setRemoteDriverAppium ( applicationProperties.getAppiumGridUrl ( ) );
+            } else {
 
-                }
             }
         }
     }
@@ -99,14 +96,15 @@ public class DriverManager {
     }
 
 
-    public void setRemoteDriverAppium (URL hubUrl) {
+    public void setRemoteDriverAppium (String hubUrl) throws MalformedURLException {
         DesiredCapabilities capabilities = new DesiredCapabilities ( );
-        if(false){ //applicationProperties.getIsAppiumRemote()
+        if ( true ) {
             capabilities.setCapability ( MobileCapabilityType.DEVICE_NAME , applicationProperties.getDeviceName ( ) );
             capabilities.setCapability ( "enableVNC" , true );
-        }else{
-            capabilities.setCapability ( MobileCapabilityType.DEVICE_NAME , "Android Device" );
-            capabilities.setCapability ( MobileCapabilityType.PLATFORM_NAME , "Android" );
+        } else {
+            capabilities.setCapability ( MobileCapabilityType.DEVICE_NAME , "Android Emulator" );
+            //capabilities.setCapability ( MobileCapabilityType.PLATFORM_NAME , "Android" );
+            capabilities.setCapability ( MobileCapabilityType.AUTOMATION_NAME , "UIAutomator1" );
         }
         capabilities.setCapability ( "app" , applicationProperties.getFullPathAppName ( ) );
         capabilities.setCapability ( "androidInstallTimeout" , 180000 );
@@ -115,7 +113,7 @@ public class DriverManager {
         capabilities.setCapability ( MobileCapabilityType.FULL_RESET , false );
 
         // Create Remote Connection to Appium Grid
-        appiumDriverThreadLocal.set ( new AndroidDriver ( hubUrl , capabilities ) );
+        appiumDriverThreadLocal.set ( new AndroidDriver ( new URL ( hubUrl ) , capabilities ) );
     }
 
 

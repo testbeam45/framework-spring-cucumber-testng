@@ -1,6 +1,5 @@
 package com.solution.common.utils;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -17,22 +16,18 @@ public class ApplicationProperties {
     private String seleniumGridUrl;
     @Value("${appium.gridUrl}")
     private String appiumGridUrl;
-    @Value ( "${web.driver.manager.active}" )
-    private Boolean activateWebDriverManager;
     @Value ( "${application.timeout}" )
     private int waitTimeout;
     @Value ( "${appium.deviceName}" )
     private String deviceName;
     @Value ( "${appium.app}" )
     private String appName;
-    @Value ( "${appium.activate}" )
-    private Boolean isAppiumOn;
 
     public String getDeviceName(){return deviceName;}
     public String getFullPathAppName(){return appName;}
 
     public int getWaitTimeout(){return waitTimeout;}
-    public Boolean getIsWebDriverOn(){return activateWebDriverManager;}
+
     public String getWeatherAppUrl() {return apiAppUrl;}
     public void setApiAppUrl(String weatherAppUrl) {
         this.apiAppUrl = weatherAppUrl;
@@ -48,6 +43,6 @@ public class ApplicationProperties {
         this.browser = browser;
     }
     public String getSeleniumGridUrl() {return seleniumGridUrl;}
+
     public String getAppiumGridUrl(){return appiumGridUrl;}
-    public Boolean getIsAppiumOn(){return isAppiumOn;}
 }

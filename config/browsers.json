@@ -1,9 +1,9 @@
 {
   "android": {
-    "default": "7.0",
+    "default": "10.0",
     "versions": {
       "7.0": {
-        "image": "selenoid/android:7.0",
+        "image": "selenoid/android:10.0",
         "port": "4444",
         "path": "/wd/hub"
       }

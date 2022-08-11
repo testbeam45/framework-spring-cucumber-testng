@@ -23,7 +23,7 @@
     </parent>
 
     <properties>
-        <activeProfile>prod</activeProfile>
+        <activeProfile>jenkins</activeProfile>
         <aspectj.version>1.9.1</aspectj.version>
         <allure.version>2.18.1</allure.version>
         <commons.version>2.11.0</commons.version>

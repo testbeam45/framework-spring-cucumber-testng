@@ -453,7 +453,7 @@ mvn test -D cucumber.filter.tags="@Example"
 - Execute the following commands inside the project to resolve any dependency issues
     1. `mvn clean install -DskipTests`
     2. `mvn clean install -fae`
-
+- Make sure to add on config/browsers.json and .yaml the devices to be executed to avoid issues
 # References 
 Documentation about Appium and Selenium Grid
 1. [Appium Tutorial Step by Step Appium Automation](https://www.swtestacademy.com/appium-tutorial/)

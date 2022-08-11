@@ -1,12 +1,9 @@
 package com.solution.mobile.utils;
 
-
 import io.appium.java_client.MobileElement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.retry.RetryException;
 import org.springframework.retry.annotation.Backoff;
@@ -17,7 +14,7 @@ import org.springframework.stereotype.Component;
 @SuppressWarnings("unused")
 public class DriverHelper {
 
-    private final Logger logger = LoggerFactory.getLogger ( DriverHelper.class );
+    //private final Logger logger = LoggerFactory.getLogger ( DriverHelper.class );
     private final DriverManager driverManager;
 
     private MobileElement element;
