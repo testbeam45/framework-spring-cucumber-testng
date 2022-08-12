@@ -28,6 +28,7 @@ jobs:
           npm install -g appium@v1.22.3
           appium -v
           appium &>/dev/null &
+          appium -p 4444 &
 
       - name: Execute emulator tests
         timeout-minutes: 30
