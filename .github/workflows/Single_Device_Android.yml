@@ -38,7 +38,7 @@ jobs:
           disable-animations: true
           profile: Nexus 6
           emulator-options: -no-snapshot -no-window -no-boot-anim -camera-back none -camera-front none -gpu swiftshader_indirect
-          script: mvn package -DactiveProfile=jenkins -pl mobile
+          script: mvn package -D cucumber.filter.tags="@Appium"
 
 
 
