@@ -2,7 +2,7 @@ name: Appium CI - Android
 on: [ push ]
 
 jobs:
-  Automate:
+  MacOS-Appium:
     runs-on: macos-latest
     strategy:
       matrix:
