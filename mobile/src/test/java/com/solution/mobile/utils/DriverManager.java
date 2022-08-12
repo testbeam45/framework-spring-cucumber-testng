@@ -3,12 +3,14 @@ package com.solution.mobile.utils;
 import com.solution.common.utils.ApplicationProperties;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -20,7 +22,7 @@ import java.util.Arrays;
 @Component
 public class DriverManager {
     private static final ThreadLocal < AndroidDriver > appiumDriverThreadLocal = new ThreadLocal <> ( );
-   // private final Logger log = LoggerFactory.getLogger ( DriverManager.class );
+    private final Logger log = LoggerFactory.getLogger ( DriverManager.class );
 
     private WebDriverWait wait;
 
@@ -36,8 +38,7 @@ public class DriverManager {
     public void createAppiumDriver ( ) throws MalformedURLException {
         if ( getAppiumDriver ( ) == null ) {
             if ( Arrays.toString ( this.environment.getActiveProfiles ( ) ).contains ( "jenkins" ) ) {
-                //startEnvironment ();
-                System.out.println ("--------------------------->"+applicationProperties.getAppiumGridUrl ( ) );
+                log.info ( "Remote URL for Appium: "+applicationProperties.getAppiumGridUrl ( ) );
                 setRemoteDriverAppium ( applicationProperties.getAppiumGridUrl ( ) );
             } else {
 
@@ -98,13 +99,13 @@ public class DriverManager {
 
     public void setRemoteDriverAppium (String hubUrl) throws MalformedURLException {
         DesiredCapabilities capabilities = new DesiredCapabilities ( );
-        if ( true ) {
-            capabilities.setCapability ( MobileCapabilityType.DEVICE_NAME , applicationProperties.getDeviceName ( ) );
+        if ( Boolean.parseBoolean ( applicationProperties.getIsAppiumRemote() ) ) {
             capabilities.setCapability ( "enableVNC" , true );
+            //capabilities.setCapability ( MobileCapabilityType.DEVICE_NAME , "android" );
+            capabilities.setCapability ( MobileCapabilityType.DEVICE_NAME , "android" );
         } else {
-            capabilities.setCapability ( MobileCapabilityType.DEVICE_NAME , "Android Emulator" );
-            //capabilities.setCapability ( MobileCapabilityType.PLATFORM_NAME , "Android" );
             capabilities.setCapability ( MobileCapabilityType.AUTOMATION_NAME , "UIAutomator1" );
+            capabilities.setCapability ( MobileCapabilityType.DEVICE_NAME , "emulator-5554" );
         }
         capabilities.setCapability ( "app" , applicationProperties.getFullPathAppName ( ) );
         capabilities.setCapability ( "androidInstallTimeout" , 180000 );

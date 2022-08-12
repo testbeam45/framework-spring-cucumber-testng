@@ -52,6 +52,7 @@ public class DriverManager {
     public void createSeleniumDriver ( ) throws MalformedURLException {
         if ( getWebDriver ( ) == null ) {
             if ( Arrays.toString ( this.environment.getActiveProfiles ( ) ).contains ( "jenkins" ) ) {
+                log.info ( "Remote URL for Selenium: "+ applicationProperties.getSeleniumGridUrl ( ) );
                 setRemoteDriver ( new URL ( applicationProperties.getSeleniumGridUrl ( ) ) );
             } else {
                 setLocalWebDriver ( );
@@ -59,16 +60,13 @@ public class DriverManager {
         }
         WebDriverRunner.setWebDriver ( getWebDriver ( ) );
         WebDriverRunner.getWebDriver ( ).manage ( ).deleteAllCookies ( );//useful for AJAX pages
+        WebDriverRunner.getWebDriver ( ).manage ( ).window ().maximize ();
     }
 
     public void setLocalWebDriver ( ) {
         switch (applicationProperties.getBrowser ( )) {
             case ("chrome"):
-                if ( false ) {
-                    System.setProperty ( "webdriver.chrome.driver" , Constants.DRIVER_DIRECTORY + "/chromedriver" + getExtension ( ) );
-                } else {
-                    WebDriverManager.chromedriver ( ).cachePath ( Constants.DRIVER_DIRECTORY ).avoidOutputTree ( ).setup ( );
-                }
+                WebDriverManager.chromedriver ( ).cachePath ( Constants.DRIVER_DIRECTORY ).avoidOutputTree ( ).setup ( );
                 ChromeOptions chromeOptions = new ChromeOptions ( );
                 chromeOptions.addArguments ( "--disable-logging" );
                 chromeOptions.addArguments ( "--no-sandbox" );
@@ -77,30 +75,17 @@ public class DriverManager {
                 webDriverThreadLocal.set ( new ChromeDriver ( chromeOptions ) );
                 break;
             case ("firefox"):
-                if ( false ) {
-                    System.setProperty ( "webdriver.gecko.driver" , Constants.DRIVER_DIRECTORY + "/geckodriver" + getExtension ( ) );
-                    System.setProperty ( FirefoxDriver.SystemProperty.BROWSER_LOGFILE , "/dev/null" );
-                } else {
-                    WebDriverManager.firefoxdriver ( ).cachePath ( Constants.DRIVER_DIRECTORY ).avoidOutputTree ( ).setup ( );
-                }
+                WebDriverManager.firefoxdriver ( ).cachePath ( Constants.DRIVER_DIRECTORY ).avoidOutputTree ( ).setup ( );
                 FirefoxOptions firefoxOptions = new FirefoxOptions ( );
                 firefoxOptions.setCapability ( "marionette" , true );
                 webDriverThreadLocal.set ( new FirefoxDriver ( firefoxOptions ) );
                 break;
             case ("safari"):
-                if ( false ) {
-                    System.setProperty ( "webdriver.opera.driver" , Constants.DRIVER_DIRECTORY + "/operadriver" + getExtension ( ) );
-                } else {
-                    WebDriverManager.safaridriver ( ).cachePath ( Constants.DRIVER_DIRECTORY ).avoidOutputTree ( ).setup ( );
-                }
+                WebDriverManager.safaridriver ( ).cachePath ( Constants.DRIVER_DIRECTORY ).avoidOutputTree ( ).setup ( );
                 webDriverThreadLocal.set ( new OperaDriver ( ) );
                 break;
             case ("edge"):
-                if ( false ) {
-                    System.setProperty ( "webdriver.edge.driver" , Constants.DRIVER_DIRECTORY + "/MicrosoftWebDriver" + getExtension ( ) );
-                } else {
-                    WebDriverManager.edgedriver ( ).cachePath ( Constants.DRIVER_DIRECTORY ).avoidOutputTree ( ).setup ( );
-                }
+                WebDriverManager.edgedriver ( ).cachePath ( Constants.DRIVER_DIRECTORY ).avoidOutputTree ( ).setup ( );
                 webDriverThreadLocal.set ( new EdgeDriver ( ) );
                 break;
             default:
@@ -117,8 +102,12 @@ public class DriverManager {
                 webDriverThreadLocal.set ( new RemoteWebDriver ( hubUrl , capability ) );
                 break;
             case "chrome":
-                capability = DesiredCapabilities.chrome ( );
-                webDriverThreadLocal.set ( new RemoteWebDriver ( hubUrl , capability ) );
+                ChromeOptions chromeOptions = new ChromeOptions ( );
+                chromeOptions.setCapability ( "enableVNC", true );
+                chromeOptions.setCapability ( "enableVideo", true );
+                chromeOptions.setCapability ( "enableLog", true );
+                chromeOptions.setCapability ( "screenResolution", "1920x1080x24" );
+                webDriverThreadLocal.set ( new RemoteWebDriver ( hubUrl , chromeOptions ) );
                 break;
             case "ie":
                 capability = DesiredCapabilities.internetExplorer ( );

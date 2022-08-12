@@ -6,3 +6,5 @@ test-output/
 *.iml
 .allure
 assets/
+Selenoid-Hub/output/
+

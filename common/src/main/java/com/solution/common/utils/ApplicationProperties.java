@@ -1,5 +1,6 @@
 package com.solution.common.utils;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -22,6 +23,12 @@ public class ApplicationProperties {
     private String deviceName;
     @Value ( "${appium.app}" )
     private String appName;
+
+    @Value("${appium.remote}")
+    private String isAppiumRemote;
+
+
+    public String getIsAppiumRemote(){return isAppiumRemote;}
 
     public String getDeviceName(){return deviceName;}
     public String getFullPathAppName(){return appName;}
