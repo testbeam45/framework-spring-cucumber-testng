@@ -13,7 +13,6 @@ Feature: As a user, I want to write notes
     Examples:
       | title | content|
       | "My Name"   |  "Jesus Salatiel"   |
-      | "My Crush"   |  "Itzell Rangel"   |
 
 
 
