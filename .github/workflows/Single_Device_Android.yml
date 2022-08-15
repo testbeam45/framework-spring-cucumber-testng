@@ -40,7 +40,8 @@ jobs:
           profile: Nexus 6
           emulator-options: -no-snapshot -no-window -no-boot-anim -camera-back none -camera-front none -gpu swiftshader_indirect
           #Warning: Without Tag is refers to Selenoid
-          script: mvn package -D cucumber.filter.tags="@Appium-Only"
+          script: mvn package -DactiveProfile=jenkins -D cucumber.filter.tags="@Appium-Only"
+
 
 
 

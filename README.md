@@ -441,9 +441,10 @@ You can run specific module with Maven from command line
 ```
 mvn clean install -pl <integration, common, functional>
 ```
-You can compile and run specific module and profile
+You can compile and run specific module and profile with tag
 ```
-mvn install clean -DactiveProfile=jenkins -pl mobile
+mvn package -DactiveProfile=jenkins -D cucumber.filter.tags="@Appium-Only"
+
 ```
 
 You can run specific module with Maven from command line
