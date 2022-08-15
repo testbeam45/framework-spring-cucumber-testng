@@ -322,27 +322,6 @@ Master POM.
 </profiles>
 ```
 
-You can then specify the profile to use when running Maven from the command line like so:
-
-```
-mvn clean install -DactiveProfile=dev
-```
-
-You can run specific module with Maven from command line
-```
-mvn clean install -pl <integration, common, functional>
-```
-You can run specific module with Maven from command line
-```
-mvn install clean -DactiveProfile=jenkins -pl mobile
-You can run specific module with Maven from command line
-```
-Below is an example of the `application.properties` file.
-
-```properties
-spring.profiles.active=@activatedProperties@
-```
-
 # Extent Reports
 
 The Framework uses [Extent Reports Framework](https://extentreports.com/) to generate the HTML Test Reports
@@ -450,6 +429,27 @@ mvn clean install -DactiveProfile=jenkins -D cucumber.filter.tags="@Web"
 To run by Tags
 ```
 mvn test -D cucumber.filter.tags="@Example"
+```
+
+You can then specify the profile to use when running Maven from the command line like so:
+
+```
+mvn clean install -DactiveProfile=dev
+```
+
+You can run specific module with Maven from command line
+```
+mvn clean install -pl <integration, common, functional>
+```
+You can compile and run specific module and profile
+```
+mvn install clean -DactiveProfile=jenkins -pl mobile
+```
+
+You can run specific module with Maven from command line
+Below is an example of the `application.properties` file.
+```properties
+spring.profiles.active=@activatedProperties@
 ```
 
 # Troubleshooting
