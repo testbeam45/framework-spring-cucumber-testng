@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Run-Mobile-Tests">
+
+    <test name="Device-Android-1">
+        <classes>
+            <class name="com.solution.mobile.ParallelRunnerTest"/>
+        </classes>
+    </test>
+
+    <test name="Device-Android-2">
+        <classes>
+            <class name="com.solution.mobile.ParallelRunnerTest"/>
+        </classes>
+    </test>
+</suite>

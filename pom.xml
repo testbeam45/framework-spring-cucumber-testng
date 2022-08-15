@@ -170,12 +170,13 @@
                     <configuration>
                         <filesets>
                             <fileset>
-                                <directory>assets</directory>
+                                <directory>Selenoid-Hub/</directory>
                                 <includes>
-                                    <include>**/*</include>
+                                    <include>output/*</include>
                                 </includes>
                                 <excludes>
-                                    <exclude>**/*.apk</exclude>
+                                    <exclude>config/*</exclude>
+                                    <exclude>**/*.yml</exclude>
                                 </excludes>
                                 <followSymlinks>false</followSymlinks>
                             </fileset>

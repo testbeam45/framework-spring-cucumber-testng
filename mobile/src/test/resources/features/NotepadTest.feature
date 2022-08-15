@@ -1,5 +1,5 @@
 @Appium
-Feature: As a user, I want to write notes
+Feature: As a user, I want to test the note application
 
   Scenario Outline: I want to write a name
     Given The user opened the Notepad Application
@@ -13,6 +13,6 @@ Feature: As a user, I want to write notes
     Examples:
       | title | content|
       | "My Name"   |  "Jesus Salatiel"   |
-
+      | "My Crush"   |  "Ana Rodriguez"   |
 
 
