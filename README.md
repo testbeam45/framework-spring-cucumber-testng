@@ -332,7 +332,11 @@ You can run specific module with Maven from command line
 ```
 mvn clean install -pl <integration, common, functional>
 ```
-
+You can run specific module with Maven from command line
+```
+mvn install clean -DactiveProfile=jenkins -pl mobile
+You can run specific module with Maven from command line
+```
 Below is an example of the `application.properties` file.
 
 ```properties

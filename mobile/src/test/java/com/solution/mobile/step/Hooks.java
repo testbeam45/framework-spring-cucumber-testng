@@ -7,6 +7,8 @@ import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import io.cucumber.spring.CucumberContextConfiguration;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.net.MalformedURLException;
@@ -14,7 +16,6 @@ import java.net.MalformedURLException;
 @CucumberContextConfiguration
 public class Hooks extends AbstractTestDefinition {
 
-    private static boolean initialized = false;
     @Autowired
     private HookUtil hookUtil;
     @Autowired
@@ -23,11 +24,13 @@ public class Hooks extends AbstractTestDefinition {
     @Before
     public void beforeScenario(Scenario scenario) throws MalformedURLException {
         driverManager.createAppiumDriver ();
+        hookUtil.startScenario ( scenario );
     }
 
     @After
     public void afterScenario(Scenario scenario) {
-        hookUtil.endOfTest(scenario);
+        hookUtil.takeScreenshot ( scenario, driverManager.getAppiumDriver () );
+        hookUtil.endOfTest ( scenario, driverManager.getAppiumDriver () );
         if(driverManager.getAppiumDriver () != null){
             driverManager.getAppiumDriver ().quit ();
         }

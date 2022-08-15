@@ -1,4 +1,4 @@
-@Appium
+@Appium-Only
 Feature: As a user, I want write one note with title and content
 
   Scenario Outline: Write Title <title> and content <content>
@@ -13,6 +13,5 @@ Feature: As a user, I want write one note with title and content
     Examples:
       | title | content|
       | "Jesus Salatiel"   |  "My name"   |
-      | "Test Automation"   |  "Globant"   |
 
 

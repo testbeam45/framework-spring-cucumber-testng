@@ -24,5 +24,12 @@ jobs:
           access-token: ${{ secrets.token }}
           path: "**/cucumber-report.json"
 
+      - name: Send Results and Generate Allure Report
+          uses: Xotabu4/send-to-allure-server-action@1
+          # always() needed because we want report for failed tests as well
+          if: ${{ always() }}
+          with:
+            allure-server-url: 'http://localhost:5001/'
+
 
 

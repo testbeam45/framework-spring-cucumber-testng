@@ -39,7 +39,8 @@ jobs:
           disable-animations: true
           profile: Nexus 6
           emulator-options: -no-snapshot -no-window -no-boot-anim -camera-back none -camera-front none -gpu swiftshader_indirect
-          script: mvn package -D cucumber.filter.tags="@Appium"
+          #Warning: Without Tag is refers to Selenoid
+          script: mvn package -D cucumber.filter.tags="@Appium-Only"
 
 
 

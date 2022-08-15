@@ -40,7 +40,8 @@ public class Hooks extends AbstractTestDefinition {
 
     @After
     public void afterScenario(Scenario scenario) {
-        hookUtil.endOfTest(scenario);
+        hookUtil.endOfTest(scenario, driverManager.getWebDriver ());
+        hookUtil.takeScreenshot ( scenario,  driverManager.getWebDriver ());
         if (driverManager.getWebDriver() != null) {
             WebDriverRunner.closeWebDriver();
         }

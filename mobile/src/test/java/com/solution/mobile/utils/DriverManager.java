@@ -3,7 +3,6 @@ package com.solution.mobile.utils;
 import com.solution.common.utils.ApplicationProperties;
 import com.solution.common.utils.SelenoidType;
 import com.solution.common.utils.SelenoidValues;
-import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.AutomationName;
 import io.appium.java_client.remote.MobileCapabilityType;

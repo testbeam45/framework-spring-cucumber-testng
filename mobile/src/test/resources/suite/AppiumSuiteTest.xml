@@ -8,9 +8,4 @@
         </classes>
     </test>
 
-    <test name="Device-Android-2">
-        <classes>
-            <class name="com.solution.mobile.ParallelRunnerTest"/>
-        </classes>
-    </test>
 </suite>
