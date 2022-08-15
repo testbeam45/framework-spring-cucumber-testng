@@ -3,12 +3,11 @@ services:
   selenium_hub:
     image: selenium/hub:3.14.0-curium
     container_name: Selenium-3
-    network_mode: bridge
     ports:
-      - "4545:4444"
+      - "4444:4444"
+
   nexus_7.1.1:
     image: budtmo/docker-android-x86-7.1.1
-    network_mode: bridge
     container_name: Nexus_7.1.1
     privileged: true
     depends_on:
