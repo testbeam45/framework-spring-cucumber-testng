@@ -28,10 +28,10 @@ jobs:
         run: mvn package -D cucumber.filter.tags="@Api"
         continue-on-error: true
 
-      - name: Send Results and Generate Allure Report
-        uses: Xotabu4/send-to-allure-server-action@1
+      #- name: Send Results and Generate Allure Report
+      #  uses: Xotabu4/send-to-allure-server-action@1
         # always() needed because we want report for failed tests as well
-        if: ${{ always() }}
-        with:
-          allure-server-url: 'http://localhost:5001/'
+      #  if: ${{ always() }}
+      #  with:
+      #    allure-server-url: 'http://localhost:5001/'
 
