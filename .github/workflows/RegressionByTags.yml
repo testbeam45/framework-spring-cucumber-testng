@@ -1,4 +1,4 @@
-name: Java CI - Regression By Tags
+name: Run Integration Tests
 
 on: [push]
 
@@ -27,11 +27,6 @@ jobs:
         if: always()
         run: mvn package -D cucumber.filter.tags="@Api"
         continue-on-error: true
-
-      - uses: deblockt/cucumber-report-annotations-action@v1.7
-        with:
-          access-token: ${{ secrets.token }}
-          path: "**/api-report.json"
 
       - name: Send Results and Generate Allure Report
         uses: Xotabu4/send-to-allure-server-action@1

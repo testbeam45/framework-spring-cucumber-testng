@@ -1,4 +1,4 @@
-name: Appium CI - Android
+name: Run Mobile Tests
 on: [ push ]
 
 jobs:

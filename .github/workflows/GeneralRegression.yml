@@ -1,4 +1,4 @@
-name: Java CI - General Regression
+name: Run Functional Tests
 
 on: [push]
 

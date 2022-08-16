@@ -1,6 +1,8 @@
 # Solution: Cucumber-Java-Page-Factory-TestNG Template
 
 [![Actions Status](https://github.com/jesussalatiel/framework-spring-cucumber-testng/actions/workflows/GeneralRegression.yml/badge.svg)](https://github.com/jesussalatiel/framework-spring-cucumber-testng/actions)
+[![Actions Status](https://github.com/jesussalatiel/framework-spring-cucumber-testng/actions/workflows/Single_Device_Android.yml/badge.svg)](https://github.com/jesussalatiel/framework-spring-cucumber-testng/actions)
+[![Actions Status](https://github.com/jesussalatiel/framework-spring-cucumber-testng/actions/workflows/GeneralRegression.yml/badge.svg)](https://github.com/jesussalatiel/framework-spring-cucumber-testng/actions)
 
 #### with Cucumber-java, Cucumber Spring, custom annotation @PageObject, lambda expression ready, Selenium PageFactory and webdriver manager (Selenium WebDriver) for:
 * ##### Chrome
@@ -441,10 +443,13 @@ You can run specific module with Maven from command line
 ```
 mvn clean install -pl <integration, common, functional>
 ```
-You can compile and run specific module and profile with tag
+To run specific module with tags on Selenoid 
 ```
 mvn package -DactiveProfile=jenkins -D cucumber.filter.tags="@Appium-Only"
-
+```
+To run specific module with tags on Local
+```
+mvn package -DactiveProfile=prod -D cucumber.filter.tags="@Appium-Only"
 ```
 
 You can run specific module with Maven from command line
