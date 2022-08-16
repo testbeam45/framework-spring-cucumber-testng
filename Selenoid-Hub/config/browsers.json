@@ -1,0 +1,47 @@
+{
+  "firefox": {
+    "default": "latest",
+    "versions": {
+      "latest": {
+        "image": "selenoid/vnc_firefox:103.0",
+        "port": "4444",
+        "tmpfs": {
+          "/tmp": "size=512m"
+        },
+        "path": "/wd/hub"
+      }
+    }
+  },
+  "chrome": {
+    "default": "latest",
+    "versions": {
+      "latest": {
+        "image": "selenoid/vnc_chrome:104.0",
+        "port": "4444",
+        "tmpfs": {
+          "/tmp": "size=512m"
+        }
+      }
+    }
+  },
+  "chrome-mobile": {
+    "default": "mobile-86.0",
+    "versions": {
+      "mobile-86.0": {
+        "image": "selenoid/chrome-mobile:86.0",
+        "port": "4444",
+        "path": "/wd/hub"
+      }
+    }
+  },
+  "android": {
+    "default": "7.0",
+    "versions": {
+      "7.0": {
+        "image": "selenoid/android:7.0",
+        "port": "4444",
+        "path": "/wd/hub"
+      }
+    }
+  }
+}
