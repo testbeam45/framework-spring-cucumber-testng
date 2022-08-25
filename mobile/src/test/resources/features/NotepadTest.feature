@@ -13,6 +13,6 @@ Feature: As a user, I want write one note with title and content
     Examples:
       | title | content|
       | "Jesus Salatiel"   |  "Test Automation"   |
-      | "Globant"          |   "Company"          |
+      #| "Globant"          |   "Company"          |
 
 
