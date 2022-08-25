@@ -21,7 +21,7 @@ public class HookUtil {
     public void startScenario(Scenario scenario){
         log.info("");
         log.info("==========================================================================");
-        log.info("================================Scenario Name: " + scenario.getName () + " ===============================");
+        log.info("================================Executing Scenario: " + scenario.getName () + " ===============================");
         log.info("==========================================================================");
         log.info("");
     }

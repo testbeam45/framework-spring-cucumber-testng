@@ -12,7 +12,6 @@ import static org.junit.Assert.assertTrue;
 
 public class NotepadPageSteps extends AbstractStep {
 
-    private final Logger logger = LoggerFactory.getLogger( NotepadPageSteps.class);
     private final ApplicationProperties applicationProperties;
 
     public NotepadPageSteps (ApplicationProperties applicationProperties) {
@@ -38,7 +37,6 @@ public class NotepadPageSteps extends AbstractStep {
     }
     @Then("The user validate the title with the text {string} displayed")
     public void the_user_validate_the_title_with_the_text_displayed(String title) {
-        System.out.println ("---------------------->"+title+ ":::::::::"+ getText ( By.xpath ( "//*[@text='"+title+"']" )));
         assertTrue("Note not added", title.equals ( getText ( By.xpath ( "//*[@text='"+title+"']" ) ) ) );
     }
 }

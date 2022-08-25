@@ -19,6 +19,7 @@ import java.util.Arrays;
 
 @Component
 public class DriverManager {
+
     private final static  ThreadLocal<AppiumDriver>  appiumDriverThreadLocal = new ThreadLocal <> ( );
     private final Logger log = LoggerFactory.getLogger ( DriverManager.class );
 
@@ -91,7 +92,7 @@ public class DriverManager {
 
         /*Reset app or environment*/
         capabilities.setCapability ( MobileCapabilityType.NO_RESET , false );
-        capabilities.setCapability ( MobileCapabilityType.FULL_RESET , false );
+        capabilities.setCapability ( MobileCapabilityType.FULL_RESET , true );
 
         // Create Remote Connection to Selenoid
         appiumDriverThreadLocal.set ( new AndroidDriver <> ( new URL ( hubUrl ) , capabilities ) );

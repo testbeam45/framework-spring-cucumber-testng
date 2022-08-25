@@ -12,7 +12,7 @@ Feature: As a user, I want write one note with title and content
 
     Examples:
       | title | content|
-      | "Jesus Salatiel"   |  "My name"   |
-      | "Test Automation"   |  "Globant"   |
+      | "Jesus Salatiel"   |  "Test Automation"   |
+      | "Globant"          |   "Company"          |
 
 

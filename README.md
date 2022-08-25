@@ -439,7 +439,7 @@ You can then specify the profile to use when running Maven from the command line
 mvn clean install -DactiveProfile=dev
 ```
 
-You can run specific module with Maven from command line
+You can run specific remote module with Maven from command line
 ```
 mvn clean install -pl <integration, common, functional>
 ```
@@ -457,7 +457,6 @@ Below is an example of the `application.properties` file.
 ```properties
 spring.profiles.active=@activatedProperties@
 ```
-
 # Troubleshooting
 
 - Execute the following commands inside the project to resolve any dependency issues
