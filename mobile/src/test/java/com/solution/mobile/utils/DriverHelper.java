@@ -1,6 +1,6 @@
 package com.solution.mobile.utils;
 
-import io.appium.java_client.MobileElement;
+//import io.appium.java_client.MobileElement; // deprecated in 9.X java-client use WebElement instead
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -17,19 +17,19 @@ public class DriverHelper {
     //private final Logger logger = LoggerFactory.getLogger ( DriverHelper.class );
     private final DriverManager driverManager;
 
-    private MobileElement element;
+    private WebElement element;
     private final DriverWait driverWait;
 
     @Autowired
-    public DriverHelper (DriverManager driverManager , DriverWait driverWait) {
+    public DriverHelper(DriverManager driverManager, DriverWait driverWait) {
         this.driverManager = driverManager;
         this.driverWait = driverWait;
     }
 
     @Retryable(maxAttempts = 3, backoff = @Backoff(delay = 500), include = {RetryException.class})
-    public void click (By locator) {
-        if ( isElementDisplayed ( locator ) ) {
-            driverManager.getAppiumDriver ( ).findElement ( locator ).click ( );
+    public void click(By locator) {
+        if (isElementDisplayed(locator)) {
+            DriverManager.getAppiumDriver().findElement(locator).click();
         }
     }
 
@@ -38,45 +38,45 @@ public class DriverHelper {
      * Send Keys to the specified element, clears the element first
      */
     @Retryable(maxAttempts = 3, backoff = @Backoff(delay = 500), include = {RetryException.class})
-    public void sendKeys (By locator , String value) {
+    public void sendKeys(By locator, String value) {
         try {
-            Thread.sleep ( 5000 );
-            if ( value != null ) {
-                element = (MobileElement) driverManager.getAppiumDriver ( ).findElement ( locator );
-                if ( value.length ( ) > 0 ) {
-                    element.clear ( );
-                    element.sendKeys ( value );
+            Thread.sleep(5000);
+            if (value != null) {
+                element = (WebElement) driverManager.getAppiumDriver().findElement(locator);
+                if (value.length() > 0) {
+                    element.clear();
+                    element.sendKeys(value);
                 } else {
-                    element.clear ( );
+                    element.clear();
                 }
             }
         } catch (Exception e) {
-            System.out.println ( e.getLocalizedMessage ( ) );
+            System.out.println(e.getLocalizedMessage());
         }
     }
 
-    public String getText (By locator) {
-       try{
-           Thread.sleep ( 5000 );
-           return driverManager.getAppiumDriver ( ).findElement ( locator ).getText ( );
-       }catch (Exception e){
-           e.printStackTrace ();
-       }
-       return null;
+    public String getText(By locator) {
+        try {
+            Thread.sleep(5000);
+            return driverManager.getAppiumDriver().findElement(locator).getText();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 
-    public boolean isElementDisplayed (By locator) {
-        return driverWait.getWebDriverWait ( ).until ( ExpectedConditions.visibilityOf ( driverManager.getAppiumDriver ( ).findElement ( locator ) ) ).isDisplayed ( );
+    public boolean isElementDisplayed(By locator) {
+        return driverWait.getWebDriverWait().until(ExpectedConditions.visibilityOf(driverManager.getAppiumDriver().findElement(locator))).isDisplayed();
     }
 
     /**
      * Checks if the specified element is displayed
      */
-    public boolean isElementDisplayed (WebElement element) {
+    public boolean isElementDisplayed(WebElement element) {
         boolean present = false;
         try {
-            present = element.isDisplayed ( );
+            present = element.isDisplayed();
         } catch (Exception ignored) {
         }
         return present;

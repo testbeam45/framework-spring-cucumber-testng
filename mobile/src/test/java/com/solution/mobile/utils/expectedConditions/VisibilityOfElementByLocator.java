@@ -15,7 +15,7 @@ public class VisibilityOfElementByLocator implements ExpectedCondition<Boolean> 
     public Boolean apply(WebDriver d) {
         try {
             return d.findElement(locator).isDisplayed();
-        } catch (StaleElementReferenceException | NoSuchElementException | ElementNotVisibleException e) {
+        } catch (StaleElementReferenceException | NoSuchElementException | ElementNotInteractableException e) {
             return false;
         } catch (Throwable t) {
             throw new Error(t);

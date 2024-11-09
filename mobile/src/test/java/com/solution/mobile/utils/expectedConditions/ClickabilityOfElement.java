@@ -21,13 +21,13 @@ public class ClickabilityOfElement implements ExpectedCondition<WebElement> {
     public WebElement apply(WebDriver webDriver) {
 
         final Wait<WebDriver> wait = new FluentWait<>(webDriver)
-                .withTimeout(Duration.ofSeconds(Constants.timeoutShort))
-                .pollingEvery(Duration.ofMillis(Constants.pollingShort))
+                .withTimeout(Constants.timeoutShort)
+                .pollingEvery(Constants.pollingShort)
                 .ignoring(java.util.NoSuchElementException.class,
                         StaleElementReferenceException.class);
         try {
             return wait.until(ExpectedConditions.elementToBeClickable(element));
-        } catch (StaleElementReferenceException | NoSuchElementException | ElementNotVisibleException e) {
+        } catch (StaleElementReferenceException | NoSuchElementException | ElementNotInteractableException e) {
             return element;
         } catch (Throwable t) {
             throw new Error(t);

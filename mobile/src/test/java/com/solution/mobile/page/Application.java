@@ -6,7 +6,7 @@ import com.solution.mobile.utils.DriverManager;
 @PageObject
 public class Application extends AbstractPage {
 
-    public Application (DriverManager driverManager) {
+    public Application(DriverManager driverManager) {
         super(driverManager);
     }
 

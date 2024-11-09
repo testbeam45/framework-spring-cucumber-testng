@@ -1,10 +1,6 @@
 package com.solution.ui.utils.expectedConditions;
 
-import org.openqa.selenium.ElementNotVisibleException;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 
 public class VisibilityOfElement implements ExpectedCondition<Boolean> {
@@ -19,7 +15,7 @@ public class VisibilityOfElement implements ExpectedCondition<Boolean> {
     public Boolean apply(WebDriver d) {
         try {
             return element.isDisplayed();
-        } catch (StaleElementReferenceException | NoSuchElementException | ElementNotVisibleException e) {
+        } catch (StaleElementReferenceException | NoSuchElementException | ElementNotInteractableException e) {
             return false;
         } catch (Throwable t) {
             throw new Error(t);

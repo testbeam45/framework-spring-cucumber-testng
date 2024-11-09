@@ -1,12 +1,7 @@
 package com.solution.ui.utils;
 
 import com.solution.common.utils.Constants;
-import com.solution.ui.utils.expectedConditions.ClickabilityOfElement;
-import com.solution.ui.utils.expectedConditions.ClickabilityOfElementByLocator;
-import com.solution.ui.utils.expectedConditions.InvisibilityOfElement;
-import com.solution.ui.utils.expectedConditions.InvisibilityOfElementByLocator;
-import com.solution.ui.utils.expectedConditions.VisibilityOfElement;
-import com.solution.ui.utils.expectedConditions.VisibilityOfElementByLocator;
+import com.solution.ui.utils.expectedConditions.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
@@ -15,6 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 import java.time.Duration;
@@ -30,6 +26,7 @@ public class DriverWait {
     public DriverWait(DriverManager driverManager) {
         this.driverManager = driverManager;
     }
+
 
     public Wait<WebDriver> getDriverWait() {
         return driverWaitThreadLocal.get();
@@ -60,7 +57,7 @@ public class DriverWait {
      */
     private void waitForElementVisible(WebElement element) {
         try {
-            waitLong().until(new VisibilityOfElement (element));
+            waitLong().until(new VisibilityOfElement(element));
         } catch (Exception ignored) {
         }
     }
@@ -70,7 +67,7 @@ public class DriverWait {
      */
     private void waitForElementVisible(By locator) {
         try {
-            waitLong().until(new VisibilityOfElementByLocator (locator));
+            waitLong().until(new VisibilityOfElementByLocator(locator));
         } catch (Exception ignored) {
         }
     }
@@ -80,7 +77,7 @@ public class DriverWait {
      */
     private void waitForElementInVisible(By locator) {
         try {
-            waitLong().until(new InvisibilityOfElementByLocator (locator));
+            waitLong().until(new InvisibilityOfElementByLocator(locator));
         } catch (Exception ignored) {
         }
     }
@@ -90,7 +87,7 @@ public class DriverWait {
      */
     private void waitForElementInVisible(WebElement element) {
         try {
-            waitLong().until(new InvisibilityOfElement (element));
+            waitLong().until(new InvisibilityOfElement(element));
         } catch (Exception ignored) {
         }
     }
@@ -100,7 +97,7 @@ public class DriverWait {
      */
     private void waitForElementClickable(WebElement element) throws NoSuchFieldException {
         try {
-            waitLong().until(new ClickabilityOfElement (element));
+            waitLong().until(new ClickabilityOfElement(element));
         } catch (Exception t) {
             throw new NoSuchFieldException("could not interact with the element " + element);
         }
@@ -119,15 +116,15 @@ public class DriverWait {
 
     public Wait<WebDriver> waitLong() {
         return new FluentWait<>(driverManager.getWebDriver())
-                .withTimeout(Duration.ofSeconds(Constants.timeoutLong))
-                .pollingEvery(Duration.ofMillis(Constants.pollingLong))
+                .withTimeout(Constants.timeoutLong)
+                .pollingEvery(Constants.pollingLong)
                 .ignoring(NoSuchElementException.class, StaleElementReferenceException.class);
     }
 
     public Wait<WebDriver> waitShort() {
         return new FluentWait<>(driverManager.getWebDriver())
-                .withTimeout(Duration.ofSeconds(Constants.timeoutShort))
-                .pollingEvery(Duration.ofMillis(Constants.pollingShort))
+                .withTimeout(Constants.timeoutShort)
+                .pollingEvery(Constants.pollingShort)
                 .ignoring(NoSuchElementException.class, StaleElementReferenceException.class);
     }
 

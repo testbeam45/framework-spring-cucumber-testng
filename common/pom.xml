@@ -15,17 +15,12 @@
         <dependency>
             <groupId>io.appium</groupId>
             <artifactId>java-client</artifactId>
-            <version>8.1.1</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.appium</groupId>
-            <artifactId>java-client</artifactId>
             <version>${appium-version}</version>
+<!--            <scope>compile</scope>-->
         </dependency>
     </dependencies>
-    <artifactId>common</artifactId>
 
+    <artifactId>common</artifactId>
     <build>
         <plugins>
             <plugin>

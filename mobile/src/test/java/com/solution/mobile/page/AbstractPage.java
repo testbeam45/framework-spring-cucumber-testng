@@ -12,11 +12,13 @@ public abstract class AbstractPage {
     private DriverManager driverManager;
 
     protected AbstractPage(DriverManager driverManager) {
-        PageFactory.initElements(driverManager.getAppiumDriver (), this);
+        PageFactory.initElements(driverManager.getAppiumDriver(), this);
     }
 
-    protected void launchApp(String apk){
-        driverManager.getAppiumDriver ().launchApp ();
+    protected void launchApp(String apk) {
+//        driverManager.getAppiumDriver().launchApp();
+        System.out.println("Driver Name is: "+driverManager.getAppiumDriver());
+        driverManager.getAppiumDriver();
     }
 
 

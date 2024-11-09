@@ -1,10 +1,10 @@
 package com.solution.api.step;
 
+import com.google.gson.Gson;
 import com.solution.api.config.AbstractTestDefinition;
 import com.solution.api.model.response.LocationWeatherRootResponse;
 import com.solution.api.service.WeatherService;
 import com.solution.common.service.StepDefinitionDataManager;
-import com.google.gson.Gson;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.restassured.response.Response;
@@ -15,7 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class Step extends AbstractTestDefinition {
 
-    private final Logger log = LoggerFactory.getLogger( Step.class);
+    private final Logger log = LoggerFactory.getLogger(Step.class);
     @Autowired
     private WeatherService weatherService;
     @Autowired

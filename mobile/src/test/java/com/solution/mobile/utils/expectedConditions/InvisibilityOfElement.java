@@ -15,7 +15,7 @@ public class InvisibilityOfElement implements ExpectedCondition<Boolean> {
     public Boolean apply(WebDriver d) {
         try {
             return element.isDisplayed();
-        } catch (StaleElementReferenceException | NoSuchElementException | ElementNotVisibleException e) {
+        } catch (StaleElementReferenceException | NoSuchElementException | ElementNotInteractableException e) {
             return true;
         } catch (Throwable t) {
             throw new Error(t);

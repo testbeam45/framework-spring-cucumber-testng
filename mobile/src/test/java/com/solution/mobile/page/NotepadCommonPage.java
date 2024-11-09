@@ -12,7 +12,7 @@ public class NotepadCommonPage extends AbstractPage {
     @FindBy(how = How.CLASS_NAME, using = "mainpage-welcome-sitename")
     private WebElement centralLogo;
 
-    public NotepadCommonPage (DriverManager driverManager) {
+    public NotepadCommonPage(DriverManager driverManager) {
         super(driverManager);
     }
 
